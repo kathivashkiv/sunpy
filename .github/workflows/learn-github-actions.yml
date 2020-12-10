@@ -6,14 +6,17 @@ on:
     branches: 
       - asv-start
 jobs:
-  echo-asv-check:
+  clone-repo:
     runs-on: ubuntu-latest
     steps:
-    - name: Print ASV checking benchmarks command
-      run : echo "Checking command -- asv check"
+      - name: Git clone sunpy repo
+        uses: actions/checkout@v2
+        
+      - name: List current folder
+        run : ls -la
   
   echo-asv-run:
-    needs: echo-asv-check
+    needs: clone-repo
     runs-on: ubuntu-latest
     steps:
     - name: Print ASV running benchmarks commands
