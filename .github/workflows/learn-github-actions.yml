@@ -1,12 +1,19 @@
 # This is a basic workflow that is manually triggered
-name: learn-github-actions
+name: echo-github-actions
 
-on: [push]
+on:
+  push:
+    branches: 
+      - asv-start
 jobs:
-  check-bats-version:
+  echo-asv-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: npm install -g bats
-      - run: bats -v
+    - name: Print ASV checking benchmarks command
+      run : echo "Checking command -- asv check"
+  
+  echo-asv-run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print ASV running benchmarks commands
+      run : echo "Running commands -- asv run, asv dev"
