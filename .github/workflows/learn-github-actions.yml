@@ -13,6 +13,7 @@ jobs:
       run : echo "Checking command -- asv check"
   
   echo-asv-run:
+    needs: echo-asv-check
     runs-on: ubuntu-latest
     steps:
     - name: Print ASV running benchmarks commands
