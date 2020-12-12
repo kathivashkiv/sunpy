@@ -23,9 +23,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install asv sunpy
   
-  echo-asv-run:
-    needs: clone-repo
-    runs-on: ubuntu-latest
-    steps:
-    - name: Print ASV running benchmarks commands
-      run : echo "Running commands -- asv run, asv dev"
+#  echo-asv-run:
+#    needs: clone-repo
+#    runs-on: ubuntu-latest
+#    steps:
+#    - name: Print ASV running benchmarks commands
+#      run : echo "Running commands -- asv run, asv dev"
