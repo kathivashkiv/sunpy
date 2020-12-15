@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout sunpy fork repo
         uses: actions/checkout@v2
+        with:
+          path: main 
         
       - name: Checkout sunpy-benchmarks repo
         uses: actions/checkout@v2
