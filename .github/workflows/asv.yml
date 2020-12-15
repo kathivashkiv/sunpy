@@ -6,11 +6,18 @@ on:
     branches: 
       - asv-start
 jobs:
-  run-benchmarks:
+  checkout-repo:
     runs-on: ubuntu-18.04
     steps:
-      - name: Git clone sunpy repo
+      - name: Checkout sunpy fork repo
         uses: actions/checkout@v2
+        
+      - name: Checkout sunpy-benchmarks repo
+        uses: actions/checkout@v2
+        with:
+          repository: sunpy/sunpy-benchmarks
+          ref : results
+          path: asv_results
         
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
@@ -21,17 +28,16 @@ jobs:
       - name: Check Python version
         run : python --version
         
-      - name: Install dependencies
-        run : |
-          python -m pip install --upgrade pip
-          pip install asv virtualenv
+#      - name: Install dependencies
+#        run : |
+#          python -m pip install --upgrade pip
+#          pip install asv virtualenv
           
-      - name: Add machine info
-        run : asv machine --machine GH-Actions --os ubuntu-18.04 --arch x64 --cpu unknown --ram unknown
-   #     run : asv machine --yes
+#      - name: Add machine info
+#        run : asv machine --machine GH-Actions --os ubuntu-18.04 --arch x64 --cpu unknown --ram unknown
         
-      - name: Run benchmarks
-        run : asv run
+#      - name: Run benchmarks
+#        run : asv run
 
       - name: List results folder
         run : |
