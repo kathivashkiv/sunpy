@@ -6,13 +6,11 @@ on:
     branches: 
       - asv-start
 jobs:
-  checkout-repo:
+  asv-run:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout sunpy fork repo
         uses: actions/checkout@v2
-        with:
-          path: main 
         
       - name: Checkout sunpy-benchmarks repo
         uses: actions/checkout@v2
@@ -30,20 +28,20 @@ jobs:
       - name: Check Python version
         run : python --version
         
-#      - name: Install dependencies
-#        run : |
-#          python -m pip install --upgrade pip
-#          pip install asv virtualenv
+      - name: Install dependencies
+        run : |
+          python -m pip install --upgrade pip
+          pip install asv virtualenv
           
-#      - name: Add machine info
-#        run : asv machine --machine GH-Actions --os ubuntu-18.04 --arch x64 --cpu unknown --ram unknown
+      - name: Add machine info
+        run : asv machine --machine GH-Actions --os ubuntu-18.04 --arch x64 --cpu unknown --ram unknown
         
-#      - name: Run benchmarks
-#        run : asv run
+      - name: Run benchmarks
+        run : asv run
 
       - name: List results folder
         run : |
-          cd asv_results
+          cd asv_results/results
           ls -la
   
 #  echo-asv-run:
