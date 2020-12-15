@@ -28,8 +28,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install asv virtualenv
         
-      - name: Check benchmarks
-        run : asv check
+      - name: Run benchmarks
+        run : asv run
   
 #  echo-asv-run:
 #    needs: clone-repo
