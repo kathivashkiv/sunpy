@@ -44,9 +44,19 @@ jobs:
           cd asv_results/results
           ls -la
   
-#  echo-asv-run:
-#    needs: clone-repo
-#    runs-on: ubuntu-latest
-#    steps:
-#    - name: Print ASV running benchmarks commands
-#      run : echo "Running commands -- asv run, asv dev"
+      - name: Install SSH Client 🔑
+        uses: webfactory/ssh-agent@v0.2.0 # This step installs the ssh client into the workflow run. There's many options available for this on the action marketplace.
+        with:
+          ssh-private-key: ${{ secrets.ASV_CI_KEY }}
+          
+      - name: Push results
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          BASE_BRANCH: master
+          BRANCH: main
+          FOLDER: asv_results/results
+          REPOSITORY_NAME: sunpy/sunpy-benchmarks
+          TARGET_FOLDER: results
+          COMMIT_MESSAGE: "Try to push new results from the CI" 
+          CLEAN: true
+          SSH: true # SSH must be set to true so the deploy action knows which protocol to deploy with.
