@@ -52,7 +52,6 @@ jobs:
       - name: Push results
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
-          BASE_BRANCH: master
           BRANCH: main
           FOLDER: asv_results/results
           REPOSITORY_NAME: sunpy/sunpy-benchmarks
