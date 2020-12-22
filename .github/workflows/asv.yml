@@ -34,7 +34,7 @@ jobs:
           pip install asv virtualenv
           
       - name: Add machine info
-        run : asv machine --machine GH-Actions --os ubuntu-18.04 --arch x64 --cpu unknown --ram unknown
+        run : asv machine --machine GH-Actions --os ubuntu-18.04 --arch x64 --cpu "2-core unknown" --ram 7GB
         
       - name: Run benchmarks
         run : asv run
