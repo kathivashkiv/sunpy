@@ -13,6 +13,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: '0'
+          
+      - name: List branches
+        run : git branch -a
+      
+      - name: List current folder
+        run : ls -la
 
       - name: Checkout sunpy-benchmarks repo
         uses: actions/checkout@v2
