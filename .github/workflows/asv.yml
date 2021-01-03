@@ -42,10 +42,10 @@ jobs:
         run : asv machine --machine GH-Actions --os ubuntu-20.04 --arch x64 --cpu "2-core unknown" --ram 7GB
       
       - name: Create HASHFILE
-        run : git rev-list 513d65.. > hashfile.txt
+        run : git rev-list 513d65.. > hashfile.log
 
       - name: Run benchmarks for HASHFILE
-        run : asv run HASHFILE:hashfile.txt
+        run : asv run HASHFILE:hashfile.log
 
       - name: Install SSH Client 🔑
         uses: webfactory/ssh-agent@v0.4.1
