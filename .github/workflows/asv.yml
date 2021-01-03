@@ -41,12 +41,9 @@ jobs:
       - name: Add machine info for ASV
         run : asv machine --machine GH-Actions --os ubuntu-20.04 --arch x64 --cpu "2-core unknown" --ram 7GB
 
-      - name: Run benchmarks for a single commit (a^!)
-        run : asv run 288d326^!
-      
-      - name: Run benchmarks for several commits (a..b)
-        run : asv run 5362a1b..513d658
-      
+      - name: Run benchmarks for commits in range a..
+        run : asv run 7d4f4f..
+
       - name: Install SSH Client 🔑
         uses: webfactory/ssh-agent@v0.4.1
         with:
